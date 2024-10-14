@@ -59,4 +59,5 @@ test('post order with incorrect data should receive code 400', async ({ request 
   })
   // Log the response status and body
   expect(response.status()).toBe(400)
+
 })
