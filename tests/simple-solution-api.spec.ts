@@ -22,7 +22,6 @@ test('get order with correct id should receive code 400', async ({ request }) =>
   expect(response.status()).toBe(400)
 })
 
-
 test('post order with correct data should receive code 201', async ({ request }) => {
   // prepare request body
   const requestBody = {
@@ -59,5 +58,4 @@ test('post order with incorrect data should receive code 400', async ({ request 
   })
   // Log the response status and body
   expect(response.status()).toBe(400)
-
 })
