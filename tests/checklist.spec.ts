@@ -21,7 +21,7 @@ test.describe('PUT requests endpoint', () => {
     expect(response.status()).toBe(StatusCodes.OK)
   })
 
-  test('get 405 with incorrect order id in URL', async ({ request }) => {
+  test('get 405 without test-order id in URL', async ({ request }) => {
     const requestHeaders = {
       api_key: '1234567890123456',
     }
@@ -78,7 +78,7 @@ test.describe('DELETE requests endpoint', () => {
     const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/11', {
       headers: requestHeaders,
     })
-    expect(response.status()).toBe(400)
+    expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
   })
 
   test('get 405 with missing ID in DELETE request', async ({ request }) => {
@@ -88,7 +88,7 @@ test.describe('DELETE requests endpoint', () => {
     const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/', {
       headers: requestHeaders,
     })
-    expect(response.status()).toBe(405)
+    expect(response.status()).toBe(StatusCodes.METHOD_NOT_ALLOWED)
   })
 })
 
@@ -103,7 +103,7 @@ test.describe('GET requests endpoint', () => {
         headers: requestHeaders,
       },
     )
-    expect(response.status()).toBe(200)
+    expect(response.status()).toBe(StatusCodes.OK)
   })
 
   test('get 500 with empty username in GET request', async ({ request }) => {
@@ -116,7 +116,7 @@ test.describe('GET requests endpoint', () => {
         headers: requestHeaders,
       },
     )
-    expect(response.status()).toBe(500)
+    expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
   })
 
   test('get 500 with missing password in GET request', async ({ request }) => {
@@ -129,6 +129,6 @@ test.describe('GET requests endpoint', () => {
         headers: requestHeaders,
       },
     )
-    expect(response.status()).toBe(500)
+    expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
   })
 })
