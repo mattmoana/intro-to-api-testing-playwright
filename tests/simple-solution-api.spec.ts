@@ -25,12 +25,12 @@ test('get order with correct id should receive code 400', async ({ request }) =>
 
 test('post order with correct data should receive code 201', async ({ request }) => {
   const orderDto = OrderDto.createOrderWithCorrectRandomData()
-  orderDto.customerName = "Sam"
+  orderDto.customerName = 'Sam'
   // prepare request body
   // const orderDto = new OrderDto("OPEN", 0, "Matt", "Morozov", "testing", 0)
   // Send a POST request to the server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
-    data: orderDto
+    data: orderDto,
   })
   // Log the response status and body
   console.log('response status:', response.status())
@@ -39,13 +39,13 @@ test('post order with correct data should receive code 201', async ({ request })
 
   const responseBody = await response.json()
   expect.soft(response.status()).toBe(StatusCodes.OK)
-  expect.soft(responseBody.status).toBe("OEN")
-  expect.soft(responseBody.customerName).toBe("Sam")
+  expect.soft(responseBody.status).toBe('OEN')
+  expect.soft(responseBody.customerName).toBe('Sam')
 })
 
 test('post order with incorrect data should receive code 400', async ({ request }) => {
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
-    data: OrderDto.createOrderWithInCorrectRandomData()
+    data: OrderDto.createOrderWithInCorrectRandomData(),
   })
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
