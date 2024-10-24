@@ -39,7 +39,7 @@ test('post order with correct data should receive code 201', async ({ request })
 
   const responseBody = await response.json()
   expect.soft(response.status()).toBe(StatusCodes.OK)
-  expect.soft(responseBody.status).toBe('OEN')
+  expect.soft(responseBody.status).toBe('OPEN')
   expect.soft(responseBody.customerName).toBe('Sam')
 })
 
