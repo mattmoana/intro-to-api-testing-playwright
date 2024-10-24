@@ -20,7 +20,6 @@ export default [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
-      // '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'warn',
       'no-undef': 'error',
